@@ -50,7 +50,7 @@ In order to execute the exercises in this hands-on lab you need to set up your e
 
 In order to complete this lab, you will need your subscription’s secure credentials. Windows Azure lets you download a Publish Settings file with all the information required to manage your account in your development environment.
 
-<a name='Ex1Task1' /></a>
+<a name='GSTask1' /></a>
 #### Task 1 - Downloading and Importing a Publish Settings file ####
 
 > **Note:** If you have done these steps in a previous lab on the same computer you can move on to Exercise 1.
