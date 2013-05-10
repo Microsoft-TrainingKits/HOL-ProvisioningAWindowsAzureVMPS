@@ -133,7 +133,7 @@ This hands-on lab includes the following exercises:
 1. [Create a new Virtual Network](#Exercise1)
 1. [Create a new Windows Server 2012 VM from gallery image](#Exercise2)
 
-Estimated time to complete this lab: **30** minutes.
+Estimated time to complete this lab: **30 minutes**.
 
 <a name="Exercise1" /></a>
 ### Exercise 1: Configure Virtual Networking ###
@@ -184,7 +184,6 @@ The next step is to create a new virtual network to your subscription.
 1. First create an XML file called **domainvnet.xml** on your local host where you are running the PowerShell ISE with the following contents:
 
 	````XML
-	# Creates the domainvnet xml file
 	<?xml version="1.0" encoding="utf-8"?>
 	<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
 	  <VirtualNetworkConfiguration>
@@ -223,7 +222,7 @@ The next step is to create a new virtual network to your subscription.
 
 	> **Note:** Replace _c:\yourpath_ above with the path to where you saved the domainvnet.xml file in the previous step.
 
-1. Open a browser and go to [https://manage.windowsazure.com/](https://manage.windowsazure.com/). When prompted, login with your **Windows Azure** credentials. In the Windows Azure portal, click **Networks**, and then click **domainvnet**.  You can see the virtual network that has been added and uses the affinity group you created earlier.
+1. Open a browser and go to [https://manage.windowsazure.com/](https://manage.windowsazure.com/). When prompted, login with your **Windows Azure** credentials. In the Windows Azure portal, click **Networks**, and then click **domainvnet**. In the **Dashboard** tab you can see the virtual network that has been added and uses the affinity group you created earlier.
 
 	![Verify The Virtual Network Creation](./Images/verify-the-virtual-network-creation.png?raw=true "Verify The Virtual Network Creation")
 
@@ -256,7 +255,7 @@ Exercise 2 contains 1 task:
 
 1. In the PowerShell ISE window, type or copy the following commands.
 
-	> **Note:** Make sure to replace NNNN in the $svcname variable below with the actual hosted service name you used before or type a new name to create a new hosted service. Additionally, replace the *AdminUsername* parameter placeholder with a username of your choice.
+	> **Note:** Make sure to replace NNNN in the $svcname variable below with a new name to create a new hosted service. Additionally, replace the *AdminUsername* parameter placeholder with a username of your choice.
 
 	````PowerShell
 	# Defines image name
