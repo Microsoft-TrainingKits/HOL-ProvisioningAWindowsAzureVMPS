@@ -6,9 +6,9 @@
 <a name="Overview" />
 ## Overview ##
 
-In this lab, you will create a new virtual network and then a new Windows Server 2012 VM from a gallery image using the Windows Azure PowerShell Cmdlets.  The virtual network creation is not necessary to create a new virtual machine from a gallery image, but is necessary to control the IP addresses assigned to the virtual machines or enable VPN connectivity back to a corporate on-premise network.
+In this lab, you will create a new virtual network and then a new Windows Server 2012 virtual machine from a gallery image using the Windows Azure PowerShell Cmdlets.  The virtual network creation is not necessary to create a new virtual machine from a gallery image, but is necessary to control the IP addresses assigned to the virtual machines or enable VPN connectivity back to a corporate on-premise network.
 
->**Note:** If you are following this HOL for a second time, you can skip Exercise 1 and move to Exercise 2 to create an additional VM on the existing virtual network you already created.
+>**Note:** If you are following this HOL for a second time, you can skip Exercise 1 and move to Exercise 2 to create an additional virtual machine on the existing virtual network you already created.
 
 
 <a name="Objectives" />
@@ -117,6 +117,14 @@ In this task, you will log on to the Windows Azure Portal and download the Publi
 		````PowerShell
 		New-AzureStorageAccount -StorageAccountName '[YOUR-STORAGE-ACCOUNT]' -Location '[DC-LOCATION]'
 		````
+		> **Note:** For the _[DC-LOCATION]_ placeholder above, please replace it with the exact text below (minus the number) from the datacenter you chose in the previous step:
+
+		> 1. West US
+		> 2. East US
+		> 3. East Asia
+		> 4. Southeast Asia
+		> 5. North Europe
+		> 6. West Europe
 
 1. Execute the following command to set your current storage account for your subscription.
 
@@ -130,15 +138,15 @@ In this task, you will log on to the Windows Azure Portal and download the Publi
 
 This hands-on lab includes the following exercises:
 
-1. [Create a new Virtual Network](#Exercise1)
-1. [Create a new Windows Server 2012 VM from gallery image](#Exercise2)
+1. [Creating a new Virtual Network](#Exercise1)
+1. [Creating a new virtual machine from the gallery image](#Exercise2)
 
 Estimated time to complete this lab: **30 minutes**.
 
 <a name="Exercise1" /></a>
-### Exercise 1: Configure Virtual Networking ###
+### Exercise 1: Creating a new Virtual Network ###
 
-The workload on many VMs requires persistent IP addresses and self-provided DNS name resolution. The default internal DNS service (iDNS) in Windows Azure is often not an acceptable solution because the IP address assigned to each virtual machine is not persistent. For this solution you will define a virtual network where you can assign the virtual machines to specific subnets.
+The workload on many virtual machines requires persistent IP addresses and self-provided DNS name resolution. The default internal DNS service (iDNS) in Windows Azure is often not an acceptable solution because the IP address assigned to each virtual machine is not persistent. For this solution you will define a virtual network where you can assign the virtual machines to specific subnets.
 
 The network configuration used for this lab defines the following:
 
@@ -173,7 +181,7 @@ The first task is to create an affinity group for the Virtual Network.
 	> 1. West US
 	> 2. East US
 	> 3. East Asia
-	> 4. South East Asia
+	> 4. Southeast Asia
 	> 5. North Europe
 	> 6. West Europe
 
@@ -212,7 +220,9 @@ The next step is to create a new virtual network to your subscription.
 	</NetworkConfiguration>
 	```
 
-	> **Note:** The preceding xml configuration will only work if there are no other networks. If you have other networks defined, get their configuration and add it to the xml file before executing the following step. To get the current virtual network configuration you can use the following command: _(Get-AzureVNetConfig).XMLConfiguration_. 
+	>**Note:** This XML file will create a virtual network named domainvnet within the affinity group you created earlier. It will add the Subnet-1 subnet to this virtual network and will create the DC01 DNS server.
+
+	> The preceding xml configuration will only work if there are no other networks. If you have other networks defined, get their configuration and add it to the xml file before executing the following step. To get the current virtual network configuration you can use the following command: _(Get-AzureVNetConfig).XMLConfiguration_. 
 
 1. In the PowerShell ISE window, type the following command:
 
@@ -230,9 +240,9 @@ The next step is to create a new virtual network to your subscription.
 	_Verify The Virtual Network Creation_
 
 <a name="Exercise2" /></a>
-### Exercise 2: Create a new virtual machine from the gallery image ###
+### Exercise 2: Creating a new virtual machine from the gallery image ###
 
-You will now create a new virtual machine from a Windows Server 2012 gallery image called DC01.  If you are doing this exercise for a second time, you should name the virtual machine something other than DC01 and also ensure you connect to the existing virtual machine network when you create the VM. The DC01 virtual machine will be used in various exercises.
+You will now create a new virtual machine from a Windows Server 2012 gallery image called DC01.  If you are doing this exercise for a second time, you should name the virtual machine something other than DC01 and also ensure you connect to the existing virtual machine network when you create the virtual machine. The DC01 virtual machine will be used in various exercises.
 
 Exercise 2 contains 1 task:
 
@@ -285,7 +295,7 @@ Exercise 2 contains 1 task:
 
 	> **Note:** The **New-AzureVM** cmdlet will create a new hosted service when the -Location or -AffinityGroup parameter is specified, or will use an existing hosted service when those parameters are not specified. 
 
-1. In the Windows Azure console, in the **Virtual Machines** section, wait a few minutes until the **DC01** virtual machine appears (or press F5 to refresh the display).
+1. In the Windows Azure console, in the **Virtual Machines** section, wait a few minutes until the **DC01** virtual machine appears (or press **F5** to refresh the display).
 
 1. Click the **DC01** name.
 
