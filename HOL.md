@@ -266,7 +266,7 @@ Exercise 2 contains 1 task:
 
 1. In the PowerShell ISE window, type or copy the following commands.
 
-	> **Note:** Make sure to replace [YOUR-SERVICE-NAME] in the $svcname variable below with a new name to create a new hosted service. Additionally, replace the *AdminUsername* parameter placeholder with a username of your choice.
+	> **Note:** Make sure to replace [YOUR-SERVICE-NAME] in the $svcname variable below with a new name to create a new hosted service. Additionally, replace the [YOUR-ADMIN-USERNAME] and  [YOUR-ADMIN-PASSWORD] placeholders with credentials of your choice.
 
 	````PowerShell
 	# Defines image name
@@ -275,17 +275,18 @@ Exercise 2 contains 1 task:
 	# Defines configuration settings
 	$vmname = "DC01"
 	$svcname = "[YOUR-SERVICE-NAME]"
-	$password = "Passw0rd!"
+	$adminUsername = "[YOUR-ADMIN-USERNAME]"
+	$password = "[YOUR-ADMIN-PASSWORD]"
 
 	# Defines network settings
 	$subnetname = "Subnet-1"
 
 	# Defines VM configuration, including size and subnet 
 	$dcvm = New-AzureVMConfig  -Name  $vmname  -ImageName  $imgname -InstanceSize "Small"  |
-		Add-AzureProvisioningConfig  -Windows -AdminUsername '[YOUR-USERNAME]' -Password  $password  |
+		Add-AzureProvisioningConfig  -Windows -AdminUsername $adminUsername -Password  $password  |
 		Set-AzureSubnet  -SubnetName  $subnetname
 
-	# Creates new VM in existing hosted service
+	# Creates new VM in the hosted service
 	New-AzureVM  -ServiceName  $svcname  -AffinityGroup 'agdomain' -VNetName 'domainvnet' -VMs  $dcvm
 	````
 
