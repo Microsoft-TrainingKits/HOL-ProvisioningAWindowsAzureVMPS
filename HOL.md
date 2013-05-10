@@ -165,16 +165,17 @@ The first task is to create an affinity group for the Virtual Network.
 	
 	````PowerShell
 	# Creates the affinity group
-	New-AzureAffinityGroup -Location "LOCATION" -Name agdomain
+	New-AzureAffinityGroup -Location "[DC-LOCATION]" -Name agdomain
 	```
 
-	> **Note:** For the _LOCATION_ variable above, please replace it with the exact text below (minus the number) from the datacenter closest to you:
-	1. West US
-	2. East US
-	3. East Asia
-	4. South East Asia
-	5. North Europe
-	6. West Europe
+	> **Note:** For the _[DC-LOCATION]_ placeholder above, please replace it with the exact text below (minus the number) from the datacenter closest to you:
+
+	> 1. West US
+	> 2. East US
+	> 3. East Asia
+	> 4. South East Asia
+	> 5. North Europe
+	> 6. West Europe
 
 <a name="Ex1Task2" /></a>
 #### Task 2 - Creating a new Virtual Network ####
@@ -217,10 +218,10 @@ The next step is to create a new virtual network to your subscription.
 
 	````PowerShell
 	# Creates the virtual network from XML file
-	Set-AzureVNetConfig -ConfigurationPath c:\yourpath\domainvnet.xml
+	Set-AzureVNetConfig -ConfigurationPath [YOUR-PATH-TO-FILE]
 	```
 
-	> **Note:** Replace _c:\yourpath_ above with the path to where you saved the domainvnet.xml file in the previous step.
+	> **Note:** Replace _[YOUR-PATH-TO-FILE]_ placeholder with the full path to the domainvnet.xml file you created in the previous step.
 
 1. Open a browser and go to [https://manage.windowsazure.com/](https://manage.windowsazure.com/). When prompted, login with your **Windows Azure** credentials. In the Windows Azure portal, click **Networks**, and then click **domainvnet**. In the **Dashboard** tab you can see the virtual network that has been added and uses the affinity group you created earlier.
 
@@ -231,7 +232,7 @@ The next step is to create a new virtual network to your subscription.
 <a name="Exercise2" /></a>
 ### Exercise 2: Create a new virtual machine from the gallery image ###
 
-You will now create a new virtual machine from a Windows Server 2012 gallery image called DC01.  If you are following this exercise after the first time, you should name the virtual machine something other than DC01 and also ensure you connect to the existing virtual machine network when you create the VM. The DC01 virtual machine will be used in various exercises.
+You will now create a new virtual machine from a Windows Server 2012 gallery image called DC01.  If you are doing this exercise for a second time, you should name the virtual machine something other than DC01 and also ensure you connect to the existing virtual machine network when you create the VM. The DC01 virtual machine will be used in various exercises.
 
 Exercise 2 contains 1 task:
 
@@ -251,11 +252,11 @@ Exercise 2 contains 1 task:
 
 	_Retrieving the virtual machine images_
 
-	> **Note:** _The list of available image files is displayed. In this task, we will use a command that will get us the name of the latest Windows Server 2012 image available._
+	> **Note:** _The list of available image files is displayed. In this task, you will use a command to retrieve the name of the latest Windows Server 2012 image available._
 
 1. In the PowerShell ISE window, type or copy the following commands.
 
-	> **Note:** Make sure to replace NNNN in the $svcname variable below with a new name to create a new hosted service. Additionally, replace the *AdminUsername* parameter placeholder with a username of your choice.
+	> **Note:** Make sure to replace [YOUR-SERVICE-NAME] in the $svcname variable below with a new name to create a new hosted service. Additionally, replace the *AdminUsername* parameter placeholder with a username of your choice.
 
 	````PowerShell
 	# Defines image name
@@ -263,7 +264,7 @@ Exercise 2 contains 1 task:
 
 	# Defines configuration settings
 	$vmname = "DC01"
-	$svcname = "NNNN"
+	$svcname = "[YOUR-SERVICE-NAME]"
 	$password = "Passw0rd!"
 
 	# Defines network settings
@@ -291,6 +292,10 @@ Exercise 2 contains 1 task:
 1. On the DC01 page, select the **Endpoints** tab to check the RDP endpoint port.
 
 	>**Note**: Notice that by default the PowerShell cmdlet will add an RDP endpoint for port 3389. Therefore, we did not specify this endpoint configuration in the PowerShell commands.
+
+	![Verifying RDP endpoint](./Images/rdp-endpoint-verification.png?raw=true "Executing the powershell commands")
+
+	_Verifying RDP endpoint_
 
 ---
 
