@@ -45,12 +45,12 @@ In order to execute the exercises in this hands-on lab you need to set up your e
 
 ---
 
-<a name='gettingstarted' /></a>
+<a name="gettingstarted" /></a>
 ### Getting Started: Obtaining Subscription's Credentials ###
 
 In order to complete this lab, you will need your subscription’s secure credentials. Windows Azure lets you download a Publish Settings file with all the information required to manage your account in your development environment.
 
-<a name='GSTask1' /></a>
+<a name="GSTask1" /></a>
 #### Task 1 - Downloading and Importing a Publish Settings file ####
 
 > **Note:** If you have done these steps in a previous lab on the same computer you can move on to Exercise 1.
@@ -224,7 +224,7 @@ The next step is to create a new virtual network to your subscription.
 
 	> The preceding xml configuration will only work if there are no other networks. If you have other networks defined, get their configuration and add it to the xml file before executing the following step. To get the current virtual network configuration you can use the following command: _(Get-AzureVNetConfig).XMLConfiguration_. 
 
-1. In the PowerShell ISE window, type the following command:
+1. In the PowerShell ISE window, type the following command to create a new virtual network using the configuration file created previously:
 
 	````PowerShell
 	# Creates the virtual network from XML file
@@ -246,10 +246,10 @@ You will now create a new virtual machine from a Windows Server 2012 gallery ima
 
 Exercise 2 contains 1 task:
 
-1. Create a new virtual machine
+1. Creating a new virtual machine
 
 <a name="Ex2Task1" /></a>
-#### Task 1 - Create a new Virtual Machine ####
+#### Task 1 - Creating a new Virtual Machine ####
 
 1. In the PowerShell ISE window, type the following command:
 
@@ -264,9 +264,9 @@ Exercise 2 contains 1 task:
 
 	> **Note:** _The list of available image files is displayed. In this task, you will use a command to retrieve the name of the latest Windows Server 2012 image available._
 
-1. In the PowerShell ISE window, type or copy the following commands.
+1. In the PowerShell ISE window, type or copy the following commands to create a new virtual machine with the specified settings, using the virtual network created previously.
 
-	> **Note:** Make sure to replace [YOUR-SERVICE-NAME] in the $svcname variable below with a new name to create a new hosted service. Additionally, replace the [YOUR-ADMIN-USERNAME] and  [YOUR-ADMIN-PASSWORD] placeholders with credentials of your choice.
+	> **Note:** Make sure to replace [YOUR-SERVICE-NAME] in the $svcname variable below with a new unique name to create a new hosted service. Additionally, replace the [YOUR-ADMIN-USERNAME] and  [YOUR-ADMIN-PASSWORD] placeholders with credentials of your choice.
 
 	````PowerShell
 	# Defines image name
